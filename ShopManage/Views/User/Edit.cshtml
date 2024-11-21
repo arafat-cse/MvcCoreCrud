@@ -1,0 +1,53 @@
+﻿@model ShopManage.Models.Vm.Vmodel
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Edit</h1>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="UserId" />
+    <div class="form-group">
+        <label>User Name</label>
+        <input asp-for="UserName" class="form-control" />
+    </div>  
+    <div class="form-group">
+        <label>Age</label>
+        <input asp-for="Age" type="number" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Date</label>
+        <input asp-for="Date" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>IsActive</label>
+        <input asp-for="IsActive" type="checkbox" class="form-check-input" />
+    </div>
+    <div class="form-group">
+        <label>Image Path</label>
+        <input asp-for="ImagePath" type="file" class="form-control" />
+        <img src="@Model.ImageFile" width="60" height="60" />
+    </div>
+
+    <div>
+        <div id="con">
+           @foreach(var p in Model.ProductList)
+            { 
+            <div class="rcotainer">
+                <label>Select Product</label>
+                
+                    <select asp-items="ViewBag.Products" id="ProductId" name="ProductId" class="form-control">
+                    <option value="@p.ProductId" >
+                       @p.ProductName
+                    </option>
+                </select>
+                <button type="button" class="btn btn-danger rbtn mt-2">Remove</button>
+            </div>
+            }
+        </div>
+        <div>
+            <a href="#" id="addmore" class="btn btn-secondary">Add More Products</a>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>

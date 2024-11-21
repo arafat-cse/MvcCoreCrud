@@ -1,0 +1,15 @@
+﻿@model ShopManage.Models.Product
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="rcotainer">
+    <label>Select Product</label>
+    <select asp-items="ViewBag.Products" id="ProductId" name="ProductId" class="form-control">
+
+        <option value="">
+            select product
+        </option>
+    </select>
+    <button type="button" class="btn btn-danger rbtn mt-2">Remove</button>
+</div>
+
