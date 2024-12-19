@@ -1,41 +1,57 @@
 ﻿@model ShopManage.Models.Vm.Vmodel
+
 @{
     ViewData["Title"] = "Create";
 }
-<h2>Create User</h2>
 
-<form asp-action="Create" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label>User Name</label>
-        <input asp-for="UserName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Age</label>
-        <input asp-for="Age" type="number" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Date</label>
-        <input asp-for="Date" type="date" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>IsActive</label>
-        <input asp-for="IsActive" type="checkbox" class="form-check-input" />
-    </div>
-    <div class="form-group">
-        <label>Image Path</label>
-        <input asp-for="ImagePath" type="file" class="form-control" />
-    </div>
+<h1>Create</h1>
 
-    <div>
-        <div id="con">
-            <!-- Dynamic dropdowns will be appended here -->
-        </div>
-        <div>
-            <a href="#" id="addmore" class="btn btn-secondary">Add More Products</a>
-        </div>
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+      
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div>
+                <div id="con">
+                    <partial name="_ProductDropdown"></partial>
+                </div>
+                <div>
+                    <a href="#" id="addmore" class="btn btn-secondary">Add More Products</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </div>
-</form>
+</div>
 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

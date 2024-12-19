@@ -25,7 +25,8 @@ namespace ShopManage.Controllers
         }
         public IActionResult Create()
         {
-            ViewBag.Products = _db.Products.ToList();
+            //ViewBag.Products = _db.Products.ToList();
+            ViewBag.Products = new SelectList(_db.Products, "ProductId", "ProductName").ToList();
             return View();
         }
         [HttpPost]
